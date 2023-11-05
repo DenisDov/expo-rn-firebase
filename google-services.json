@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "821500473199",
+    "project_id": "expornfirebase",
+    "storage_bucket": "expornfirebase.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:821500473199:android:426fecfc202b423fce829a",
+        "android_client_info": {
+          "package_name": "com.denisdov.expornfirebase"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBzPNSc-LausQgeZvfCgfzp_xkNOmmtQTQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
