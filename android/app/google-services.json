@@ -14,6 +14,14 @@
       },
       "oauth_client": [
         {
+          "client_id": "821500473199-gt49bf6dhf6t1d1ttepgvjkq2atv4446.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.denisdov.expornfirebase",
+            "certificate_hash": "5e8f16062ea3cd2c4a0d547876baa6f38cabf625"
+          }
+        },
+        {
           "client_id": "821500473199-6frpqfhv1vpup5tu8p474lnb7imfsoal.apps.googleusercontent.com",
           "client_type": 3
         }
