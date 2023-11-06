@@ -179,7 +179,7 @@ export const AuthProvider = ({ children }: PropsWithChildren) => {
       // Create a Google credential with the token
       const googleCredential = auth.GoogleAuthProvider.credential(idToken);
       // Sign-in the user with the credential
-      return auth().signInWithCredential(googleCredential);
+      await auth().signInWithCredential(googleCredential);
     } catch (err: any) {
       console.log("social signin err: ", err);
       dispatch({ type: "LOGOUT" });
