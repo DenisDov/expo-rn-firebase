@@ -21,3 +21,16 @@ While you're developing your project, you can change your simulator's or device'
 - If working with an iOS emulator locally, you can use the Cmd ⌘ + Shift + a shortcut to toggle between light and dark modes.
 - If using an Android Emulator, you can run adb shell "cmd uimode night yes" to enable dark mode, and adb shell "cmd uimode night no" to disable dark mode.
 - If using a real device or an Android Emulator, you can toggle the system dark mode setting in the device's settings.
+
+## Create native folders after added package with plugin
+
+`npx expo prebuild --platform android --clean`
+
+### Build without EAS
+
+`npx expo run:ios` or android
+.aab - `npx expo run:android --variant release`
+
+### EAS
+
+Build locally with EAS: android .apk: `eas build --platform android --profile preview --local`

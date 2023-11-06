@@ -13,7 +13,8 @@
     },
     "assetBundlePatterns": ["**/*"],
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "com.denisdov.expornfirebase"
     },
     "android": {
       "googleServicesFile": "./google-services.json",
@@ -33,6 +34,11 @@
     ],
     "experiments": {
       "tsconfigPaths": true
+    },
+    "extra": {
+      "eas": {
+        "projectId": "b0f842be-16f6-42de-b2f5-316a344b121d"
+      }
     }
   }
 }
