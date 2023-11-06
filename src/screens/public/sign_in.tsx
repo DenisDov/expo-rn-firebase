@@ -3,17 +3,17 @@ import { Box, Text } from "@app/theme";
 import { useState } from "react";
 import { ActivityIndicator, TouchableOpacity } from "react-native";
 import { SignInScreenProps } from "@app/navigation/types";
-// import {
-//   GoogleSignin,
-//   GoogleSigninButton,
-//   statusCodes,
-// } from "@react-native-google-signin/google-signin";
+import {
+  GoogleSignin,
+  GoogleSigninButton,
+  statusCodes,
+} from "@react-native-google-signin/google-signin";
 
 export const SignInScreen = ({ navigation }: SignInScreenProps) => {
   const [email, setEmail] = useState("xsyndromex@gmail.com");
   const [password, setPassword] = useState("kT431!");
 
-  const { loading, signIn } = useAuth();
+  const { loading, signIn, signInWithGoogle } = useAuth();
 
   return (
     <Box>
@@ -25,12 +25,12 @@ export const SignInScreen = ({ navigation }: SignInScreenProps) => {
         <TouchableOpacity onPress={() => navigation.navigate("SignUp")}>
           <Text>Sign Up</Text>
         </TouchableOpacity>
-        {/* <GoogleSigninButton
+        <GoogleSigninButton
           size={GoogleSigninButton.Size.Wide}
           color={GoogleSigninButton.Color.Dark}
           onPress={signInWithGoogle}
           disabled={loading}
-        /> */}
+        />
       </Text>
     </Box>
   );

@@ -6,8 +6,15 @@ import React, {
 } from "react";
 
 import auth from "@react-native-firebase/auth";
+import { GoogleSignin } from "@react-native-google-signin/google-signin";
 
 import { Alert } from "react-native";
+
+GoogleSignin.configure({
+  scopes: ["https://www.googleapis.com/auth/drive.readonly"],
+  webClientId:
+    "821500473199-6frpqfhv1vpup5tu8p474lnb7imfsoal.apps.googleusercontent.com",
+});
 
 interface User {
   uid: string;
@@ -25,6 +32,7 @@ interface ContextInterface {
   signUp: (email: string, password: string) => Promise<void>;
   signIn: (email: string, password: string) => Promise<void>;
   logout: () => void;
+  signInWithGoogle: () => void;
 }
 
 const userInitialState = {
@@ -43,6 +51,7 @@ const contextInitialState: ContextInterface = {
   signIn: () => Promise.resolve(),
   signUp: () => Promise.resolve(),
   logout: () => {},
+  signInWithGoogle: () => Promise.resolve(),
 };
 
 type Action =
@@ -97,7 +106,6 @@ export const AuthProvider = ({ children }: PropsWithChildren) => {
 
   useEffect(() => {
     const unsubscribe = auth().onAuthStateChanged((user) => {
-      console.log("user: ", user);
       if (user) {
         // User is signed in, see docs for a list of available properties
         // https://firebase.google.com/docs/reference/js/auth.user
@@ -125,7 +133,8 @@ export const AuthProvider = ({ children }: PropsWithChildren) => {
     try {
       dispatch({ type: "LOADING_START" });
       await auth().createUserWithEmailAndPassword(email, password);
-    } catch (err) {
+    } catch (err: any) {
+      console.log("err: ", err);
       if (err.code === "auth/email-already-in-use") {
         Alert.alert("User already exists");
       }
@@ -138,8 +147,12 @@ export const AuthProvider = ({ children }: PropsWithChildren) => {
       dispatch({ type: "LOADING_START" });
       await auth().signInWithEmailAndPassword(email, password);
     } catch (err: any) {
+      console.log("err: ", err.code);
       if (err.code === "auth/invalid-login-credentials") {
         Alert.alert("User not exist, please sign up");
+      }
+      if (err.code === "auth/invalid-login") {
+        Alert.alert("That email address is invalid!");
       }
       dispatch({ type: "LOGOUT" });
     }
@@ -149,8 +162,27 @@ export const AuthProvider = ({ children }: PropsWithChildren) => {
     try {
       dispatch({ type: "LOADING_START" });
       await auth().signOut();
+      if (authState.user?.providerId === "google.com") {
+        await GoogleSignin.signOut();
+      }
     } catch (err) {
       console.log("err: ", err);
+    }
+  };
+
+  const signInWithGoogle = async () => {
+    try {
+      dispatch({ type: "LOADING_START" });
+      await GoogleSignin.hasPlayServices();
+      // Get the users ID token
+      const { idToken } = await GoogleSignin.signIn();
+      // Create a Google credential with the token
+      const googleCredential = auth.GoogleAuthProvider.credential(idToken);
+      // Sign-in the user with the credential
+      return auth().signInWithCredential(googleCredential);
+    } catch (err: any) {
+      console.log("social signin err: ", err);
+      dispatch({ type: "LOGOUT" });
     }
   };
 
@@ -160,6 +192,7 @@ export const AuthProvider = ({ children }: PropsWithChildren) => {
     signUp, // register
     signIn, // login
     logout,
+    signInWithGoogle,
   };
 
   return (

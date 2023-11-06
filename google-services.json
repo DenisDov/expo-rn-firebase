@@ -12,7 +12,12 @@
           "package_name": "com.denisdov.expornfirebase"
         }
       },
-      "oauth_client": [],
+      "oauth_client": [
+        {
+          "client_id": "821500473199-6frpqfhv1vpup5tu8p474lnb7imfsoal.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
       "api_key": [
         {
           "current_key": "AIzaSyBzPNSc-LausQgeZvfCgfzp_xkNOmmtQTQ"
@@ -20,7 +25,12 @@
       ],
       "services": {
         "appinvite_service": {
-          "other_platform_oauth_client": []
+          "other_platform_oauth_client": [
+            {
+              "client_id": "821500473199-6frpqfhv1vpup5tu8p474lnb7imfsoal.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
         }
       }
     }
