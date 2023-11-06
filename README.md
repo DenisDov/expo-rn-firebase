@@ -34,12 +34,19 @@ While you're developing your project, you can change your simulator's or device'
 
 https://docs.expo.dev/develop/development-builds/create-a-build/#create-a-build-for-the-device
 
-### Build without EAS
+### Prebuild
 
 `npx expo run:ios` or android
 
-.aab - `npx expo run:android --variant release`
+### Run application for testing purposes with environment
+
+`npx expo run:android --variant debug`
+`npx expo run:android --variant release`
 
 ### EAS
 
-Build locally with EAS: android .apk: `eas build --platform android --profile development`
+Build locally with EAS: android .apk: `eas build --platform android --profile development --local`
+
+### Simulate production mode
+
+npx expo start --no-dev

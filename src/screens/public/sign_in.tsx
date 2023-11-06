@@ -15,8 +15,10 @@ export const SignInScreen = ({ navigation }: SignInScreenProps) => {
 
   const { loading, signIn, signInWithGoogle } = useAuth();
 
+  console.log("__DEV__: ", process.env.NODE_ENV);
   return (
     <Box>
+      <Text>ENVIRONMENT: {process.env.NODE_ENV}</Text>
       <TouchableOpacity onPress={() => signIn(email, password)}>
         <Text>LOGIN WITH FIREBASE</Text>
         {loading && <ActivityIndicator size="large" color="tomato" />}
