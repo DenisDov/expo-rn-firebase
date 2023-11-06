@@ -36,7 +36,8 @@ https://docs.expo.dev/develop/development-builds/create-a-build/#create-a-build-
 
 ### Prebuild
 
-`npx expo run:ios` or android
+https://docs.expo.dev/workflow/prebuild/
+`npx expo prebuild --platform android` or ios
 
 ### Run application for testing purposes with environment
 
@@ -49,4 +50,17 @@ Build locally with EAS: android .apk: `eas build --platform android --profile de
 
 ### Simulate production mode
 
-npx expo start --no-dev
+`npx expo start --no-dev`
+
+## Build .apk for test
+
+-prod: `eas build --platform android --profile preview --local`
+-dev: `eas build --platform android --profile development --local`
+
+### Biild android release .aab
+
+`eas build --platform android --local`
+
+### React native google sign in
+
+You need 2 SHA-1 keys for dev and prod at least;

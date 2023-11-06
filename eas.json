@@ -12,6 +12,11 @@
         "buildConfiguration": "Debug"
       }
     },
+    "preview": {
+      "android": {
+        "buildType": "apk"
+      }
+    },
     "production": {}
   },
   "submit": {
