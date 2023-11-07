@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>821500473199-3f2r9lqf5pb64vcjui1vto15iep1gp3p.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.821500473199-3f2r9lqf5pb64vcjui1vto15iep1gp3p</string>
+	<key>ANDROID_CLIENT_ID</key>
+	<string>821500473199-d3lci1hfu82h1sss3alnarbhaq2kqc15.apps.googleusercontent.com</string>
+	<key>API_KEY</key>
+	<string>AIzaSyCSQ4LAh6Nz9Rk7pxyxcWfhhzFHel8Tdxo</string>
+	<key>GCM_SENDER_ID</key>
+	<string>821500473199</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.denisdov.expornfirebase</string>
+	<key>PROJECT_ID</key>
+	<string>expornfirebase</string>
+	<key>STORAGE_BUCKET</key>
+	<string>expornfirebase.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:821500473199:ios:55aa5069add661c3ce829a</string>
+</dict>
+</plist>
