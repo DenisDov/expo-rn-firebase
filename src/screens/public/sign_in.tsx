@@ -15,38 +15,40 @@ export const SignInScreen = ({ navigation }: SignInScreenProps) => {
     <Box flex={1}>
       <Box gap="m">
         <Text>ENVIRONMENT: {process.env.NODE_ENV}</Text>
-        <Box>
-          <TouchableOpacity onPress={() => signIn(email, password)}>
-            <Text>LOGIN WITH EMAIL</Text>
-          </TouchableOpacity>
-        </Box>
+        <TouchableOpacity onPress={() => signIn(email, password)}>
+          <Text>LOGIN WITH EMAIL</Text>
+        </TouchableOpacity>
 
-        <Box>
-          <TouchableOpacity onPress={() => navigation.navigate("SignUp")}>
-            <Text>REGISTER WITH EMAIL</Text>
-          </TouchableOpacity>
-        </Box>
+        <TouchableOpacity onPress={() => navigation.navigate("SignUp")}>
+          <Text>REGISTER WITH EMAIL</Text>
+        </TouchableOpacity>
 
-        <Box>
-          <Ionicons.Button
-            name="logo-google"
-            backgroundColor="#4385F4"
-            onPress={signInWithGoogle}
-            disabled={loading}
-          >
-            Sign Up with Google
-          </Ionicons.Button>
-        </Box>
-        <Box>
-          <Ionicons.Button
-            name="logo-facebook"
-            backgroundColor="#3b5998"
-            onPress={signInWithFacebook}
-            disabled={loading}
-          >
-            Sign Up with Facebook
-          </Ionicons.Button>
-        </Box>
+        <Ionicons.Button
+          name="logo-google"
+          backgroundColor="#4385F4"
+          onPress={signInWithGoogle}
+          disabled={loading}
+        >
+          Sign Up with Google
+        </Ionicons.Button>
+
+        <Ionicons.Button
+          name="logo-facebook"
+          backgroundColor="#3b5998"
+          onPress={signInWithFacebook}
+          disabled={loading}
+        >
+          Sign Up with Facebook
+        </Ionicons.Button>
+
+        <Ionicons.Button
+          name="logo-apple"
+          backgroundColor="#000000"
+          // onPress={signInWithApple}
+          disabled={loading}
+        >
+          Sign Up with Apple
+        </Ionicons.Button>
 
         {loading && <ActivityIndicator size="large" color="tomato" />}
       </Box>

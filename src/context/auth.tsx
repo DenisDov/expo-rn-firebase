@@ -138,9 +138,7 @@ export const AuthProvider = ({ children }: PropsWithChildren) => {
       await auth().createUserWithEmailAndPassword(email, password);
     } catch (err: any) {
       console.log("err: ", err);
-      if (err.code === "auth/email-already-in-use") {
-        Alert.alert("User already exists");
-      }
+      Alert.alert(err.message);
       dispatch({ type: "LOGOUT" });
     }
   };
@@ -151,12 +149,7 @@ export const AuthProvider = ({ children }: PropsWithChildren) => {
       await auth().signInWithEmailAndPassword(email, password);
     } catch (err: any) {
       console.log("err: ", err.code);
-      if (err.code === "auth/invalid-login-credentials") {
-        Alert.alert("User not exist, please sign up");
-      }
-      if (err.code === "auth/invalid-login") {
-        Alert.alert("That email address is invalid!");
-      }
+      Alert.alert(err.message);
       dispatch({ type: "LOGOUT" });
     }
   };
@@ -187,7 +180,8 @@ export const AuthProvider = ({ children }: PropsWithChildren) => {
       // Sign-in the user with the credential
       await auth().signInWithCredential(googleCredential);
     } catch (err: any) {
-      console.log("social signin err: ", err);
+      console.log("google signin err: ", err);
+      Alert.alert(err.message);
       dispatch({ type: "LOGOUT" });
     }
   };
@@ -221,7 +215,9 @@ export const AuthProvider = ({ children }: PropsWithChildren) => {
       // Sign-in the user with the credential
       await auth().signInWithCredential(facebookCredential);
     } catch (err: any) {
-      console.log("social signin err: ", err);
+      console.log("facebook signin err: ", err);
+      Alert.alert(err.message);
+
       dispatch({ type: "LOGOUT" });
     }
   };
