@@ -13,15 +13,13 @@ export const SignInScreen = ({ navigation }: SignInScreenProps) => {
   const [email, setEmail] = useState("xsyndromex@gmail.com");
   const [password, setPassword] = useState("kT431!");
 
-  const { loading, signIn, signInWithGoogle } = useAuth();
+  const { loading, signIn, signInWithGoogle, signInWithFacebook } = useAuth();
 
-  console.log("__DEV__: ", process.env.NODE_ENV);
   return (
     <Box>
       <Text>ENVIRONMENT: {process.env.NODE_ENV}</Text>
       <TouchableOpacity onPress={() => signIn(email, password)}>
         <Text>LOGIN WITH FIREBASE</Text>
-        {loading && <ActivityIndicator size="large" color="tomato" />}
       </TouchableOpacity>
       <Text>
         <TouchableOpacity onPress={() => navigation.navigate("SignUp")}>
@@ -34,6 +32,12 @@ export const SignInScreen = ({ navigation }: SignInScreenProps) => {
           disabled={loading}
         />
       </Text>
+      <Box>
+        <TouchableOpacity onPress={signInWithFacebook}>
+          <Text>Sign Up with facebook</Text>
+        </TouchableOpacity>
+      </Box>
+      {loading && <ActivityIndicator size="large" color="tomato" />}
     </Box>
   );
 };

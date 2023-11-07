@@ -39,6 +39,15 @@
             "useFrameworks": "static"
           }
         }
+      ],
+      [
+        "react-native-fbsdk-next",
+        {
+          "appID": "1366299013969027",
+          "clientToken": "e6585b6592acb26fd3204239bb959637",
+          "displayName": "Expo RN Firebase Demo",
+          "scheme": "fb1366299013969027"
+        }
       ]
     ],
     "experiments": {

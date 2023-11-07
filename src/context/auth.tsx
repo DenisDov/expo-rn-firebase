@@ -7,6 +7,7 @@ import React, {
 
 import auth from "@react-native-firebase/auth";
 import { GoogleSignin } from "@react-native-google-signin/google-signin";
+import { LoginManager, AccessToken } from "react-native-fbsdk-next";
 
 import { Alert } from "react-native";
 
@@ -33,6 +34,7 @@ interface ContextInterface {
   signIn: (email: string, password: string) => Promise<void>;
   logout: () => void;
   signInWithGoogle: () => void;
+  signInWithFacebook: () => void;
 }
 
 const userInitialState = {
@@ -52,6 +54,7 @@ const contextInitialState: ContextInterface = {
   signUp: () => Promise.resolve(),
   logout: () => {},
   signInWithGoogle: () => Promise.resolve(),
+  signInWithFacebook: () => Promise.resolve(),
 };
 
 type Action =
@@ -165,6 +168,9 @@ export const AuthProvider = ({ children }: PropsWithChildren) => {
       if (authState.user?.providerId === "google.com") {
         await GoogleSignin.signOut();
       }
+      if (authState.user?.providerId === "facebook.com") {
+        LoginManager.logOut();
+      }
     } catch (err) {
       console.log("err: ", err);
     }
@@ -186,6 +192,40 @@ export const AuthProvider = ({ children }: PropsWithChildren) => {
     }
   };
 
+  const signInWithFacebook = async () => {
+    try {
+      dispatch({ type: "LOADING_START" });
+
+      // Attempt login with permissions
+      const result = await LoginManager.logInWithPermissions([
+        "public_profile",
+        "email",
+      ]);
+
+      if (result.isCancelled) {
+        throw "User cancelled the login process";
+      }
+
+      // Once signed in, get the users AccessToken
+      const data = await AccessToken.getCurrentAccessToken();
+
+      if (!data) {
+        throw "Something went wrong obtaining access token";
+      }
+
+      // Create a Firebase credential with the AccessToken
+      const facebookCredential = auth.FacebookAuthProvider.credential(
+        data.accessToken
+      );
+
+      // Sign-in the user with the credential
+      await auth().signInWithCredential(facebookCredential);
+    } catch (err: any) {
+      console.log("social signin err: ", err);
+      dispatch({ type: "LOGOUT" });
+    }
+  };
+
   const value = {
     loading: authState.loading,
     user: authState.user,
@@ -193,6 +233,7 @@ export const AuthProvider = ({ children }: PropsWithChildren) => {
     signIn, // login
     logout,
     signInWithGoogle,
+    signInWithFacebook,
   };
 
   return (

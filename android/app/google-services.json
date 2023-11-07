@@ -45,6 +45,13 @@
             {
               "client_id": "821500473199-6frpqfhv1vpup5tu8p474lnb7imfsoal.apps.googleusercontent.com",
               "client_type": 3
+            },
+            {
+              "client_id": "821500473199-3f2r9lqf5pb64vcjui1vto15iep1gp3p.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.denisdov.expornfirebase"
+              }
             }
           ]
         }
