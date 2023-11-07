@@ -1,5 +1,7 @@
 # Expo app with RN Firebase SDK
 
+Implemented Firebase auth with `Email, Google Sign in, Facebook`
+
 ### Getting Started
 
 - npm i
