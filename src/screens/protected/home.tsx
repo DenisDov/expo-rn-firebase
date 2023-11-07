@@ -5,7 +5,7 @@ import { ActivityIndicator, TouchableOpacity } from "react-native";
 export const HomeScreen = () => {
   const { user, logout, loading } = useAuth();
   return (
-    <Box flex={1} backgroundColor="primary">
+    <Box flex={1} backgroundColor="primary" padding="m">
       <Text variant="title">PROTECTED HOME SCREEN</Text>
       <Text>{user?.email}</Text>
       <Text>{user?.providerId}</Text>

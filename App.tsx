@@ -12,7 +12,7 @@ import Navigation from "@app/navigation";
 import { AuthProvider } from "@app/context/auth";
 
 export default function App() {
-  const darkMode = true;
+  const darkMode = false;
   return (
     <ThemeProvider theme={darkMode ? darkTheme : theme}>
       <SafeAreaProvider initialMetrics={initialWindowMetrics}>

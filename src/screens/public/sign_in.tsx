@@ -12,7 +12,7 @@ export const SignInScreen = ({ navigation }: SignInScreenProps) => {
   const { loading, signIn, signInWithGoogle, signInWithFacebook } = useAuth();
 
   return (
-    <Box flex={1}>
+    <Box flex={1} padding="m">
       <Box gap="m">
         <Text>ENVIRONMENT: {process.env.NODE_ENV}</Text>
         <TouchableOpacity onPress={() => signIn(email, password)}>
