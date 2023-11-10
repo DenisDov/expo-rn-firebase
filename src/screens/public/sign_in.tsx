@@ -4,12 +4,19 @@ import { useState } from "react";
 import { ActivityIndicator, TouchableOpacity } from "react-native";
 import { SignInScreenProps } from "@app/navigation/types";
 import Ionicons from "@expo/vector-icons/Ionicons";
+import * as AppleAuthentication from "expo-apple-authentication";
 
 export const SignInScreen = ({ navigation }: SignInScreenProps) => {
   const [email, setEmail] = useState("xsyndromex@gmail.com");
   const [password, setPassword] = useState("kT431!");
 
-  const { loading, signIn, signInWithGoogle, signInWithFacebook } = useAuth();
+  const {
+    loading,
+    signIn,
+    signInWithGoogle,
+    signInWithFacebook,
+    signInWithApple,
+  } = useAuth();
 
   return (
     <Box flex={1} padding="m">
@@ -41,14 +48,13 @@ export const SignInScreen = ({ navigation }: SignInScreenProps) => {
           Sign Up with Facebook
         </Ionicons.Button>
 
-        <Ionicons.Button
-          name="logo-apple"
-          backgroundColor="#000000"
-          // onPress={signInWithApple}
-          disabled={loading}
-        >
-          Sign Up with Apple
-        </Ionicons.Button>
+        <AppleAuthentication.AppleAuthenticationButton
+          buttonType={AppleAuthentication.AppleAuthenticationButtonType.SIGN_IN}
+          buttonStyle={AppleAuthentication.AppleAuthenticationButtonStyle.BLACK}
+          cornerRadius={5}
+          style={{ width: "100%", height: 40 }}
+          onPress={signInWithApple}
+        />
 
         {loading && <ActivityIndicator size="large" color="tomato" />}
       </Box>

@@ -14,6 +14,7 @@
     "assetBundlePatterns": ["**/*"],
     "ios": {
       "googleServicesFile": "./GoogleService-Info.plist",
+      "usesAppleSignIn": true,
       "supportsTablet": true,
       "bundleIdentifier": "com.denisdov.expornfirebase"
     },
@@ -32,6 +33,7 @@
       "@react-native-firebase/app",
       "@react-native-firebase/auth",
       "@react-native-google-signin/google-signin",
+      "expo-apple-authentication",
       [
         "expo-build-properties",
         {

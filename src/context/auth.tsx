@@ -8,6 +8,7 @@ import React, {
 import auth from "@react-native-firebase/auth";
 import { GoogleSignin } from "@react-native-google-signin/google-signin";
 import { LoginManager, AccessToken } from "react-native-fbsdk-next";
+import * as AppleAuthentication from "expo-apple-authentication";
 
 import { Alert } from "react-native";
 
@@ -35,6 +36,7 @@ interface ContextInterface {
   logout: () => void;
   signInWithGoogle: () => void;
   signInWithFacebook: () => void;
+  signInWithApple: () => void;
 }
 
 const userInitialState = {
@@ -55,6 +57,7 @@ const contextInitialState: ContextInterface = {
   logout: () => {},
   signInWithGoogle: () => Promise.resolve(),
   signInWithFacebook: () => Promise.resolve(),
+  signInWithApple: () => Promise.resolve(),
 };
 
 type Action =
@@ -222,6 +225,25 @@ export const AuthProvider = ({ children }: PropsWithChildren) => {
     }
   };
 
+  const signInWithApple = async () => {
+    try {
+      dispatch({ type: "LOADING_START" });
+      const appleAuthRequestResponse = await AppleAuthentication.signInAsync({
+        requestedScopes: [
+          AppleAuthentication.AppleAuthenticationScope.FULL_NAME,
+          AppleAuthentication.AppleAuthenticationScope.EMAIL,
+        ],
+      });
+      console.log("appleAuthRequestResponse: ", appleAuthRequestResponse);
+      // Sign-in the user with the credential
+      // await auth().signInWithCredential(appleCredential);
+    } catch (err: any) {
+      console.log("apple signin err: ", err);
+      Alert.alert(err.message);
+      dispatch({ type: "LOGOUT" });
+    }
+  };
+
   const value = {
     loading: authState.loading,
     user: authState.user,
@@ -230,6 +252,7 @@ export const AuthProvider = ({ children }: PropsWithChildren) => {
     logout,
     signInWithGoogle,
     signInWithFacebook,
+    signInWithApple,
   };
 
   return (

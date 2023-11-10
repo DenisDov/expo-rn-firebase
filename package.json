@@ -26,7 +26,8 @@
     "react-native-fbsdk-next": "^12.1.0",
     "react-native-safe-area-context": "4.6.3",
     "react-native-screens": "~3.22.0",
-    "expo-system-ui": "~2.4.0"
+    "expo-system-ui": "~2.4.0",
+    "expo-apple-authentication": "~6.1.0"
   },
   "devDependencies": {
     "@babel/core": "^7.20.0",
